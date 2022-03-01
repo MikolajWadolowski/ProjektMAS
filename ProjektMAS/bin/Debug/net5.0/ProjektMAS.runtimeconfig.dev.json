@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Wadol\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Wadol\\.nuget\\packages"
+    ]
+  }
+}

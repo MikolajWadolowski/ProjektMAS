@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ProjektMAS.Models.Match>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h1>List of Matches</h1>
+
+<p>
+    <a asp-action="Create">Create New Match</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Team
+            </th>
+            <th>
+                Hall
+            </th>
+            <th>
+                Enemy Team
+            </th>
+            <th>
+                Day of the Match
+            </th>
+
+         
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+           
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team.TeamName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hall.HallName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OpponentName)
+                </td>
+                <td>
+                    @item.DayofTheMatch.Date.ToShortDateString()
+                </td>
+
+               
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.MatchID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.MatchID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.MatchID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

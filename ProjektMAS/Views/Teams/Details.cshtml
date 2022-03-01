@@ -1,0 +1,81 @@
+﻿@model ProjektMAS.Models.ViewModelTeam
+
+
+
+<h1>Details</h1>
+
+
+
+
+<div>
+    <h4>Team</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Creation Date
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ThisTeam.CreationDate)
+        </dd>
+        <dt class="col-sm-2">
+            Team Name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ThisTeam.TeamName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ThisTeam.Region)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ThisTeam.Region)
+        </dd>
+    </dl>
+</div>
+
+<h2>This is the list of matches played by this Team</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Hall Name
+            </th>
+            <th>
+                Opponent Name
+            </th>
+            <th>
+                Day of the Match
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Match match in Model.AllMatches)
+        {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => match.Hall.HallName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => match.OpponentName)
+            </td>
+            <td>
+                @match.DayofTheMatch.Date.ToShortDateString()
+            </td>
+            <td>
+                <a asp-controller="Matches" asp-action="Details" asp-route-id="@match.MatchID">Details</a>
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

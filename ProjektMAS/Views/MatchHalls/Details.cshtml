@@ -1,0 +1,75 @@
+﻿@model ProjektMAS.Models.ViewModelHall
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>MatchHall</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Seat Number
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ThisHall.SeatNumber)
+        </dd>
+        <dt class = "col-sm-2">
+           Hall Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ThisHall.HallName)
+        </dd>
+    </dl>
+</div>
+<h2>List of matches played in this Hall </h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Team Name
+            </th>
+            <th>
+                OpponentName
+            </th>
+            <th>
+                Day of the Match
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Match match in Model.AllMatches)
+        {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => match.Team.TeamName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => match.OpponentName)
+            </td>
+            <td>
+                @match.DayofTheMatch.Date.ToShortDateString()
+            </td>
+            <td>
+                <a asp-controller="Matches" asp-action="Details" asp-route-id="@match.MatchID">Details</a>
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

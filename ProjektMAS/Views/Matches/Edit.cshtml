@@ -1,0 +1,70 @@
+﻿@model ProjektMAS.Models.Match
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Match</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MatchID" />
+            <div class="form-group">
+                <label asp-for="MatchHallID" class="control-label"></label>
+                <select asp-for="MatchHallID" class="form-control" asp-items="ViewBag.MatchHallID"></select>
+                <span asp-validation-for="MatchHallID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeamID" class="control-label"></label>
+                <select asp-for="TeamID" class="form-control" asp-items="ViewBag.TeamID"></select>
+                <span asp-validation-for="TeamID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OpponentName" class="control-label"></label>
+                <input asp-for="OpponentName" class="form-control" />
+                <span asp-validation-for="OpponentName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataSince" class="control-label"></label>
+                <input asp-for="DataSince" class="form-control" />
+                <span asp-validation-for="DataSince" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataUntill" class="control-label"></label>
+                <input asp-for="DataUntill" class="form-control" />
+                <span asp-validation-for="DataUntill" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duration" class="control-label"></label>
+                <input asp-for="Duration" class="form-control" />
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonID" class="control-label"></label>
+                <select asp-for="PersonID" class="form-control" asp-items="ViewBag.PersonID"></select>
+                <span asp-validation-for="PersonID" class="text-danger"></span>
+            </div>
+        
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
